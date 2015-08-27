@@ -19,10 +19,13 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com' to prevent pushes to rubygems.org, or delete to allow pushes to any server."
-  end
+
+  spec.add_runtime_dependency "ruby-stemmer", "~> 0.9"
+  spec.add_runtime_dependency "optionally", "~> 0.0"
 
   spec.add_development_dependency "bundler", "~> 1.9"
   spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "rspec", "~> 3.3"
+  spec.add_development_dependency "toady", "~> 0.0"
+  spec.add_development_dependency "simplecov"
 end
