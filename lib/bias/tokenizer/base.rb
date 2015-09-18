@@ -1,8 +1,16 @@
 require 'bias/tokenizer/definitions'
+require 'bias/util'
+require 'forwardable'
 
 module Bias
   module Tokenizer
+
+    # Base for all tokenizers
     module Base
+      extend Forwardable
+
+      def_delegator Bias::Util, :blank?, :blank?
+
       def initialize(options = {})
         @options = options
       end
@@ -39,10 +47,6 @@ module Bias
         text.
           gsub(/['`]/, '').
           gsub(/[_]/, ' ')
-      end
-
-      def blank?(word)
-        word.to_s.strip == ''
       end
 
       def significant?(word)

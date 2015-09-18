@@ -3,6 +3,8 @@ require 'lingua/stemmer'
 
 module Bias
   module Tokenizer
+
+    # A semmer-based tokenizer
     class Stems
       include Bias::Tokenizer::Base
 

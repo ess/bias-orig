@@ -4,6 +4,8 @@ require 'bias/tokenizer/stems'
 require 'bias/tokenizer/raw'
 
 module Bias
+
+  # High-level tokenizer interface
   module Tokenizer
     def self.stem_words_for(text)
       stem_tokenizer.words_for(text)

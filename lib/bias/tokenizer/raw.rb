@@ -2,6 +2,8 @@ require 'bias/tokenizer/base'
 
 module Bias
   module Tokenizer
+
+    # A raw string tokenizer
     class Raw
       include Bias::Tokenizer::Base
 

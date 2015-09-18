@@ -1,6 +1,7 @@
 require 'optionally'
 
 module Bias
+  # raining token databases for fun and profit
   class Trainer
     include Optionally::Required
 

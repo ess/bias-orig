@@ -1,4 +1,6 @@
 module Bias
+
+  # Storage adapter manager
   module Storage
     def self.register(name, adapter)
       check_adapter(adapter)
@@ -23,12 +25,15 @@ module Bias
       @adapters = nil
     end
 
+    # Base Error
     class Error < StandardError
     end
 
+    # Error thrown for unknown adapters
     class UnknownAdapter < Error
     end
 
+    # Error thrown for incomplete adapters
     class IncompleteAdapter < Error
     end
   end
