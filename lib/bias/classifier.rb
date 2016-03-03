@@ -6,23 +6,25 @@ module Bias
   class Classifier
     include Optionally::Required
 
-    attr_reader :algorithm
+    attr_reader :algorithm, :thresholds
 
     def initialize(options = {})
       check_required_options(options, :algorithm)
 
       @algorithm = options[:algorithm]
       @min_prob = options[:min_prob]
+      @default = options[:default]
+      @thresholds = options[:thresholds] || {}
     end
 
-    def classify(text, default = nil)
+    def classify(text)
       scores = algorithm.category_scores(text)
 
       best, max_prob = best_score(scores)
       apply_thresholds(scores,best, max_prob)
     end
 
-    private
+    #private
 
     def apply_thresholds(scores, best, max_prob)
       # Return the default category in case the threshold condition was
@@ -62,8 +64,8 @@ module Bias
       @min_prob ||= 0.0
     end
 
-    def thresholds
-      @thresholds ||= {}
+    def default
+      @default
     end
   end
 end

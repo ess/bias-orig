@@ -56,7 +56,7 @@ module Bias
       end
 
       def sample_count(category)
-        samples[normalized(category)].length
+        sample_category(category).length
       end
 
       def total_sample_count
@@ -99,15 +99,15 @@ module Bias
         "#{category}#{boundary_marker}#{word}"
       end
 
-      def existing_link?(category, word)
-        !categorizations[link_name(category, word)].nil?
-      end
+      #def existing_link?(category, word)
+        #!categorizations[link_name(category, word)].nil?
+      #end
 
-      def get_category(category)
-        category = normalized(category)
+      #def get_category(category)
+        #category = normalized(category)
 
-        category_known?(category) ? category : nil
-      end
+        #category_known?(category) ? category : nil
+      #end
 
       def sample_category(category)
         samples[category] ||= []

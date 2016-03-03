@@ -2,13 +2,15 @@ require 'bias/algorithm/base'
 
 module Bias
   module Algorithm
+
+    # descriptive comment
     class TFIDF < Base
 
       def text_probability_for_category(text, category)
         tokenizer.
           words_for(text).
           map {|word| word_probability_for_category(word, category)}.
-          inject(0) {|s, probability| s + probability}
+          inject(:+)
       end
 
       private
@@ -23,8 +25,9 @@ module Bias
 
         tf = 1.0 * word_cat_count / cat_count
 
-        idf = Math.log10((total_categories + 2) / (data_set.classification_count_for_word(word).to_f + 1.0))
-
+        idf = Math.log10(
+          (total_categories + 2) / (data_set.classification_count_for_word(word).to_f + 1.0)
+        )
 
         tf * idf
       end

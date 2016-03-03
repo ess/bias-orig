@@ -2,6 +2,8 @@ require 'bias/algorithm/base'
 
 module Bias
   module Algorithm
+
+    # Descriptive Comment
     class Bayes < Base
 
       def initialize(options = {})

@@ -2,6 +2,8 @@ require 'optionally/required'
 
 module Bias
   module Algorithm
+
+    # Descriptive Comment
     class Base
       include Optionally::Required
 
@@ -19,12 +21,7 @@ module Bias
       end
 
       def category_scores(text)
-        probs = {}
-        categories.each do |category|
-          probs[category] = text_probability_for_category(text, category)
-        end
-
-        probs.map {|category, score| [category, score]}.
+        category_probabilities(text).map {|category, score| [category, score]}.
           sort {|left, right| right[1] <=> left[1]}
       end
 
@@ -32,8 +29,17 @@ module Bias
       def categories
         data_set.categories
       end
+
+      def category_probabilities(text)
+        probs = {}
+        categories.each do |category|
+          probs[category] = text_probability_for_category(text, category)
+        end
+        probs
+      end
     end
 
+    # Descriptive Comment
     class IncompleteAlgorithm < StandardError
     end
   end
