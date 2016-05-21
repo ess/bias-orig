@@ -99,16 +99,6 @@ module Bias
         "#{category}#{boundary_marker}#{word}"
       end
 
-      #def existing_link?(category, word)
-        #!categorizations[link_name(category, word)].nil?
-      #end
-
-      #def get_category(category)
-        #category = normalized(category)
-
-        #category_known?(category) ? category : nil
-      #end
-
       def sample_category(category)
         samples[category] ||= []
       end
